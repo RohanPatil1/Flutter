@@ -3,6 +3,8 @@
   
 - SignIn with Facebook
 - SignIn with Twitter
+- Works on Android
+- Works on iOS
 
 ## Working
 
