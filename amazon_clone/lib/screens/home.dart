@@ -13,45 +13,23 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  Widget productCarousel;
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
-
-    productCarousel = Container(
-      height: 200.0,
-      width: MediaQuery.of(context).size.width,
-      child: Carousel(
-        boxFit: BoxFit.cover,
-        images: [
-          AssetImage('images/c1.jpg'),
-          AssetImage('images/m1.jpeg'),
-          AssetImage('images/w3.jpeg'),
-          AssetImage('images/w4.jpeg'),
-          AssetImage('images/m2.jpg'),
-        ],
-        dotColor: Colors.transparent,
-        dotBgColor: Colors.transparent,
-        autoplay: false,
-        animationCurve: Curves.fastOutSlowIn,
-        animationDuration: Duration(milliseconds: 1000),
-      ),
-    );
 
     return Scaffold(
       appBar: AppBar(
         elevation: 0.1,
         backgroundColor: Color(0xff232F3E),
         centerTitle: true,
-        title:  Padding(
-          padding: const EdgeInsets.only(top:12.0),
+        title: Padding(
+          padding: const EdgeInsets.only(top: 12.0),
           child: Center(
             child: Image.asset(
               'images/amazon_white.png',
               fit: BoxFit.cover,
-             width: 100.0,
-
+              width: 100.0,
               alignment: Alignment.center,
             ),
           ),
@@ -89,7 +67,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              decoration: BoxDecoration(color: Colors.redAccent),
+              decoration: BoxDecoration(color:Color(0xff232F3E)),
             ),
             InkWell(
               onTap: () {},
@@ -155,14 +133,7 @@ class _HomeState extends State<Home> {
       ),
       body: ListView(
         children: <Widget>[
-          productCarousel,
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "Categories",
-              style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),
-            ),
-          ),
+          ProductCarousel(),
           CategoryListView(),
           Padding(
             padding: EdgeInsets.only(top: 10.0, left: 8.0, bottom: 8.0),
@@ -171,11 +142,63 @@ class _HomeState extends State<Home> {
               style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),
             ),
           ),
-          Container(
-            height: 320.0,
-            child: ProductGridView(),
+          SingleChildScrollView(
+            child: Container(
+              height: 380,
+              child: ProductGridView(),
+            ),
           ),
+          Container(
+            height: 100.0,
+            width: MediaQuery.of(context).size.width,
+            child: Carousel(
+              boxFit: BoxFit.fitWidth,
+              images: [
+
+                AssetImage('images/banners/banner4.PNG'),
+
+                AssetImage('images/banners/banner3.PNG'),
+
+                AssetImage('images/banners/banner2.jpg'),
+                AssetImage('images/banners/banner1.PNG'),
+//          AssetImage('images/m1.jpeg'),
+//          AssetImage('images/w3.jpeg'),
+//          AssetImage('images/w4.jpeg'),
+//          AssetImage('images/m2.jpg'),
+              ],
+              dotColor: Colors.transparent,
+              dotBgColor: Colors.transparent,
+              autoplay: true,
+              animationCurve: Curves.fastOutSlowIn,
+              animationDuration: Duration(milliseconds: 2500),
+            ),
+          )
         ],
+      ),
+    );
+  }
+
+  Widget ProductCarousel() {
+    return Container(
+      height: 100.0,
+      width: MediaQuery.of(context).size.width,
+      child: Carousel(
+        boxFit: BoxFit.fitWidth,
+        images: [
+          AssetImage('images/banners/banner2.jpg'),
+          AssetImage('images/banners/banner1.PNG'),
+          AssetImage('images/banners/banner3.PNG'),
+          AssetImage('images/banners/banner4.PNG'),
+//          AssetImage('images/m1.jpeg'),
+//          AssetImage('images/w3.jpeg'),
+//          AssetImage('images/w4.jpeg'),
+//          AssetImage('images/m2.jpg'),
+        ],
+        dotColor: Colors.transparent,
+        dotBgColor: Colors.transparent,
+        autoplay: true,
+        animationCurve: Curves.fastOutSlowIn,
+        animationDuration: Duration(milliseconds: 1000),
       ),
     );
   }

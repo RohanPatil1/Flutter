@@ -34,6 +34,18 @@ class _SignUpState extends State<SignUp> {
     final user = Provider.of<UserProvider>(context);
 
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Center(
+          child: Image.asset(
+            'images/amazon_logo.png',
+            fit: BoxFit.cover,
+            width: 150.0,
+            alignment: Alignment.center,
+          ),
+        ),
+      ),
       key: key,
       body: user.status == Status.Authenticating
           ? Loading()
@@ -41,7 +53,7 @@ class _SignUpState extends State<SignUp> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(
-                      left: 20, right: 20.0, top: 150, bottom: 150),
+                      left: 20, right: 20.0, top: 100, bottom: 150),
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.white,

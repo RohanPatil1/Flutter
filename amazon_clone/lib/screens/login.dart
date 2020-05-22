@@ -31,6 +31,7 @@ class _LoginState extends State<Login> {
     final user = Provider.of<UserProvider>(context);
 
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Center(

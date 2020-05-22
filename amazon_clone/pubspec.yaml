@@ -57,26 +57,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
-    - images/c1.jpg
-    - images/m1.jpeg
-    - images/w3.jpeg
-    - images/w4.jpeg
-    - images/m2.jpg
-    - images/cats/tshirt.png
-    - images/cats/dress.png
-    - images/cats/formal.png
-    - images/cats/informal.png
-    - images/cats/shoe.png
-    - images/cats/jeans.png
-    - images/cats/accessories.png
-    - images/products/blazer1.jpeg
-    - images/products/dress1.jpeg
-    - images/products/blazer2.jpeg
-    - images/products/dress2.jpeg
-    - images/products/pants1.jpg
-    - images/products/pants2.jpeg
-    - images/products/skt2.jpeg
-    - images/products/skt1.jpeg
-    - images/amazon_logo.png
-    - images/amazon_white.png
+    - images/cats/
+    - images/banners/
+    - images/products/
+
 

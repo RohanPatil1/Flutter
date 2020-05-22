@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:amazoine_clone/screens/product_details.dart';
 
@@ -9,27 +10,24 @@ class ProductGridView extends StatefulWidget {
 class _ProductGridViewState extends State<ProductGridView> {
   var productList = [
     {
-      "name": "Blazer",
-      "img": "images/products/blazer1.jpeg",
+      "name": "Apple iPad (6th Gen) 32 GB 9.7 inch with Wi-Fi Only (Space Grey)",
+      "img": "images/products/product1.jpeg",
       "old_price": 2000,
       "price": 1500
     },
     {
-      "name": "Red Dress",
-      "img": "images/products/dress1.jpeg",
-      "old_price": 1350,
+      "name": "boAt BassHeads 900 Super Extra Bass Wired Headsets",
+      "img": "images/products/product2.jpeg",     "old_price": 1350,
       "price": 999,
     },
     {
-      "name": "Blazer 2",
-      "img": "images/products/blazer2.jpeg",
-      "old_price": 2000,
+      "name": "Samsung Super 6 138cm (55 inch) Ultra HD (4K) LED Smart TV",
+      "img": "images/products/product3.jpeg","old_price": 2000,
       "price": 1500
     },
     {
-      "name": "Red Dress 2",
-      "img": "images/products/dress2.jpeg",
-      "old_price": 1350,
+      "name": "SanDisk Ultra 32 GB MicroSDHC Class 10 98 MB/s Memory Card",
+      "img": "images/products/product4.jpeg", "old_price": 1350,
       "price": 999,
     },
   ];
@@ -63,8 +61,9 @@ class Product extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 3.0,
+      elevation: 0.0,
       child: Container(
+        margin: EdgeInsets.only(left: 2.0,right: 2.0),
         child: Material(
           child: InkWell(
               onTap: () => Navigator.of(context)
@@ -76,7 +75,62 @@ class Product extends StatelessWidget {
                       product_img: product_img,
                     );
                   })),
-              child: Stack(
+              child: Container(
+                height: 200.0,
+                width: 270.0,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      height: 100.0,
+                      child: Image.asset(
+                        product_img,
+                        fit: BoxFit.scaleDown,
+                      ),
+                    ),
+                    Text(
+                      product_name,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black, fontSize: 14.0,fontWeight: FontWeight.w500),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "₹$product_price",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14.0,
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),Text(
+                            "\₹$product_old_price",
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 11.0,
+                                decoration: TextDecoration.lineThrough),
+                          ),
+                        ],
+                      ),
+                    )
+
+
+                  ],
+                ),
+              )),
+        ),
+      ),
+    );
+  }
+}
+
+/*
+ Stack(
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(left: 16.0),
@@ -139,9 +193,5 @@ class Product extends StatelessWidget {
                     ),
                   ),
                 ],
-              )),
-        ),
-      ),
-    );
-  }
-}
+              )
+ */
