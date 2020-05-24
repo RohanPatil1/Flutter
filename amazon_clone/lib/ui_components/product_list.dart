@@ -10,24 +10,28 @@ class ProductGridView extends StatefulWidget {
 class _ProductGridViewState extends State<ProductGridView> {
   var productList = [
     {
-      "name": "Apple iPad (6th Gen) 32 GB 9.7 inch with Wi-Fi Only (Space Grey)",
+      "name":
+          "Apple iPad (6th Gen) 32 GB 9.7 inch with Wi-Fi Only (Space Grey)",
       "img": "images/products/product1.jpeg",
-      "old_price": 2000,
-      "price": 1500
+      "old_price": 38000,
+      "price": 35000
     },
     {
       "name": "boAt BassHeads 900 Super Extra Bass Wired Headsets",
-      "img": "images/products/product2.jpeg",     "old_price": 1350,
+      "img": "images/products/product2.jpeg",
+      "old_price": 1350,
       "price": 999,
     },
     {
       "name": "Samsung Super 6 138cm (55 inch) Ultra HD (4K) LED Smart TV",
-      "img": "images/products/product3.jpeg","old_price": 2000,
-      "price": 1500
+      "img": "images/products/product3.jpeg",
+      "old_price": 22100,
+      "price": 18999
     },
     {
       "name": "SanDisk Ultra 32 GB MicroSDHC Class 10 98 MB/s Memory Card",
-      "img": "images/products/product4.jpeg", "old_price": 1350,
+      "img": "images/products/product4.jpeg",
+      "old_price": 1350,
       "price": 999,
     },
   ];
@@ -63,7 +67,7 @@ class Product extends StatelessWidget {
     return Card(
       elevation: 0.0,
       child: Container(
-        margin: EdgeInsets.only(left: 2.0,right: 2.0),
+        margin: EdgeInsets.only(left: 2.0, right: 2.0),
         child: Material(
           child: InkWell(
               onTap: () => Navigator.of(context)
@@ -85,17 +89,22 @@ class Product extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       height: 100.0,
-                      child: Image.asset(
-                        product_img,
-                        fit: BoxFit.scaleDown,
+                      child: Hero(
+                        tag: product_name,
+                        child: Image.asset(
+                          product_img,
+                          fit: BoxFit.scaleDown,
+                        ),
                       ),
                     ),
                     Text(
                       product_name,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.black, fontSize: 14.0,fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w500),
                     ),
-
                     Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Row(
@@ -106,20 +115,21 @@ class Product extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 14.0,
-                              fontWeight: FontWeight.bold
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 4.0),
+                            child: Text(
+                              "\₹$product_old_price",
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 12.0,
+                                  decoration: TextDecoration.lineThrough),
                             ),
-                          ),Text(
-                            "\₹$product_old_price",
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 11.0,
-                                decoration: TextDecoration.lineThrough),
                           ),
                         ],
                       ),
                     )
-
-
                   ],
                 ),
               )),
