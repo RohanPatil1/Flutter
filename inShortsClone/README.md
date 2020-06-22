@@ -1,16 +1,26 @@
-# indianews18
+ # Assignments App 
+  ![iconimage](https://i2.wp.com/contractiq.com/blog/wp-content/uploads/2016/06/inshorts-logo.jpg)  
+  
+# Componets Used
+- Flutter Design UI
+- ScopedModel Architecture
+- SQLite Database(sqflite) 
+- JSON DataModel,Fetching
+- API : newsapi.org
 
-A new Flutter application.
 
-## Getting Started
+ # Offline Mode
+ - You can save an article by double tapping the title
+-  These SavedArticles can be viewed in the OfflineMode Screen
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+ # Working
+ ![s1image](![Er8Zn8](https://i.makeagif.com/media/2-02-2020/Er8Zn8.gif)) 
+ 
+ **After Proper Credentials, This How The Admin Uploads Files To Firebase**
+ 
+ ![s2image](https://i.imgur.com/Bk6aWjL.gif) 
+ 
+ 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
