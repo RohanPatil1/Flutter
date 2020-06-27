@@ -57,7 +57,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Brand : Haier",
+                  "Brand : Apple",
                   style: TextStyle(
                       color: Colors.blueAccent,
                       fontSize: 16.0,
@@ -185,7 +185,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         ),
                       ),
                       Text(
-                        "Save ₹${widget.product_price - widget.product_old_price}",
+                        "Save ₹${widget.product_old_price - widget.product_price}",
                         style: TextStyle(
                           color: Color(0xffB12704),
                           fontSize: 14.0,
