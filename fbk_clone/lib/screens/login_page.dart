@@ -1,4 +1,6 @@
 import 'package:fbk_clone/config/palette.dart';
+import 'package:fbk_clone/screens/create_account_screen.dart';
+import 'package:fbk_clone/utils/firebaseutils.dart';
 import 'package:fbk_clone/utils/other_utils.dart';
 import 'package:fbk_clone/widgets/custom_input.dart';
 import 'package:fbk_clone/widgets/responsive.dart';
@@ -34,6 +36,7 @@ class _LoginPageMobileState extends State<LoginPageMobile>
     with SingleTickerProviderStateMixin {
   Animation logoAnimation, inputBoxAnimation;
   AnimationController animationController;
+  String email, password;
 
   @override
   void initState() {
@@ -43,13 +46,14 @@ class _LoginPageMobileState extends State<LoginPageMobile>
     animationController =
         AnimationController(duration: Duration(seconds: 2), vsync: this);
 
-    logoAnimation =
-        Tween(begin: widget.deviceHeight * 0.45, end: widget.deviceHeight * 0.62)
-            .animate(CurvedAnimation(
-                parent: animationController,  curve: Interval(0.2, 1.0, curve: Curves.easeInOutExpo)))
-              ..addListener(() {
-                setState(() {});
-              });
+    logoAnimation = Tween(
+            begin: widget.deviceHeight * 0.45, end: widget.deviceHeight * 0.62)
+        .animate(CurvedAnimation(
+            parent: animationController,
+            curve: Interval(0.2, 1.0, curve: Curves.easeInOutExpo)))
+          ..addListener(() {
+            setState(() {});
+          });
     inputBoxAnimation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
         parent: animationController,
         curve: Interval(0.8, 1.0, curve: Curves.easeInOut)))
@@ -102,7 +106,12 @@ class _LoginPageMobileState extends State<LoginPageMobile>
                           CustomInput(
                             hintText: "Phone number or email address",
                             onChanged: (value) {
-                              OtherUtils().registerEmail = value;
+                              setState(() {
+                                // OtherUtils().registerEmail = value;
+                                setState(() {
+                                  email = value;
+                                });
+                              });
                             },
                             onSubmitted: (value) {
                               OtherUtils().passwordFocusNode.requestFocus();
@@ -112,17 +121,23 @@ class _LoginPageMobileState extends State<LoginPageMobile>
                           CustomInput(
                             hintText: "Password",
                             onChanged: (value) {
-                              OtherUtils().registerPassword = value;
+                              password = value;
+//                                OtherUtils().registerPassword = value;
                             },
                             focusNode: OtherUtils().passwordFocusNode,
                             isPasswordField: true,
                             onSubmitted: (value) {
-                              OtherUtils().submitForm(context);
+                              setState(() {
+                                password = value;
+                              });
+                              OtherUtils()
+                                  .submitLoginForm(context, email, password);
                             },
                           ),
                           InkWell(
                             onTap: () {
-                              OtherUtils().submitForm(context);
+                              OtherUtils()
+                                  .submitLoginForm(context, email, password);
                             },
                             child: Container(
                               margin: EdgeInsets.symmetric(
@@ -186,23 +201,32 @@ class _LoginPageMobileState extends State<LoginPageMobile>
                           ],
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 12.0, vertical: 18.0),
-                        decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(5.0)),
-                        child: Center(
-                            child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Create New Facebook Account",
-                            style: GoogleFonts.roboto(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16.0),
-                          ),
-                        )),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CreateAccountScreen(),
+                              ));
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 12.0, vertical: 18.0),
+                          decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(5.0)),
+                          child: Center(
+                              child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Create New Facebook Account",
+                              style: GoogleFonts.roboto(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16.0),
+                            ),
+                          )),
+                        ),
                       )
                     ],
                   ),
@@ -305,9 +329,7 @@ class LoginPageDesktop extends StatelessWidget {
                             children: [
                               CustomInputWeb(
                                 hintText: "Email address or phone number",
-                                onChanged: (value) {
-                                  OtherUtils().registerEmail = value;
-                                },
+                                onChanged: (value) {},
                                 onSubmitted: (value) {
                                   OtherUtils().passwordFocusNode.requestFocus();
                                 },
@@ -317,16 +339,16 @@ class LoginPageDesktop extends StatelessWidget {
                                 hintText: "Password",
                                 isPasswordField: true,
                                 onChanged: (value) {
-                                  OtherUtils().registerPassword = value;
+                                  // OtherUtils().registerPassword = value;
                                 },
                                 focusNode: OtherUtils().passwordFocusNode,
                                 onSubmitted: (value) {
-                                  OtherUtils().submitForm(context);
+                                  // OtherUtils().submitLoginForm(context);
                                 },
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  OtherUtils().submitForm(context);
+                                  //OtherUtils().submitLoginForm(context);
                                 },
                                 child: Container(
                                   margin: EdgeInsets.symmetric(
@@ -369,23 +391,32 @@ class LoginPageDesktop extends StatelessWidget {
                                 color: Colors.grey,
                                 thickness: 0.4,
                               )),
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                                horizontal: 12.0, vertical: 18.0),
-                            decoration: BoxDecoration(
-                                color: Colors.green,
-                                borderRadius: BorderRadius.circular(5.0)),
-                            child: Center(
-                                child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Create New  Account",
-                                style: GoogleFonts.roboto(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16.0),
-                              ),
-                            )),
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => CreateAccountScreen(),
+                                  ));
+                            },
+                            child: Container(
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: 12.0, vertical: 18.0),
+                              decoration: BoxDecoration(
+                                  color: Colors.green,
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              child: Center(
+                                  child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Create New  Account",
+                                  style: GoogleFonts.roboto(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 16.0),
+                                ),
+                              )),
+                            ),
                           )
                         ],
                       ),

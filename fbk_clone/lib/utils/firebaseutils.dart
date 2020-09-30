@@ -17,4 +17,16 @@ class FirebaseUtils {
       return e.toString();
     }
   }
+
+  Future<String> logInUser(String email, String password) async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      return null;
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    } catch (e) {
+      return e.toString();
+    }
+  }
 }

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'firebaseutils.dart';
 
 class OtherUtils{
-   String registerEmail = "cam123raj@gmail.com";
-    String registerPassword = "rohan123";
+
    FocusNode passwordFocusNode = FocusNode();
   Future<void> showAlert(BuildContext context,String error) async {
     return showDialog(
@@ -28,10 +27,21 @@ class OtherUtils{
         });
   }
 
-   void submitForm(BuildContext context) async {
+   void   submitCreateAccForm(BuildContext context,String email,String password) async {
 
      String accountStatus = await FirebaseUtils()
-         .createFbAccount(OtherUtils().registerEmail, OtherUtils().registerPassword);
+         .createFbAccount(email, password);
+
+     if (accountStatus != null) {
+       OtherUtils().showAlert(context, accountStatus);
+     } else {
+       Navigator.pop(context);
+     }
+   }
+   void submitLoginForm(BuildContext context,String email,String password) async {
+
+     String accountStatus = await FirebaseUtils()
+         .logInUser(email, password);
 
      if (accountStatus != null) {
        OtherUtils().showAlert(context, accountStatus);
