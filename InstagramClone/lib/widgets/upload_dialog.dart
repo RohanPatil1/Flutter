@@ -19,7 +19,7 @@ class UploadDialog extends StatelessWidget {
             ClipPath(
               clipper: BackgroundClipper(),
               child: Container(
-                width: 280.0,
+                width: 260.0,
                 height: 500.0,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -129,7 +129,7 @@ class UploadDialog extends StatelessWidget {
             ),
             Positioned(
               top: 0.0,
-              right: -40.0,
+              right: -27.0,
               child: Image.asset(
                 "assets/images/mha.png",
                 height: 300.0,

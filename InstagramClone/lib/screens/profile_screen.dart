@@ -29,7 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   int followersCount = 0;
   int followingCount = 0;
   bool isFollowing = false;
-  VideoPlayerController _controller;
+  VideoPlayerController _profileBgCtrl;
 
   /*
   followers->profileID->ONlineUserId
@@ -39,11 +39,11 @@ following->>ONlineUserId->profileID
   @override
   void initState() {
     print("=================initState()=================");
-    _controller = VideoPlayerController.asset('assets/videos/bg5.mp4')
+    _profileBgCtrl = VideoPlayerController.asset('assets/videos/bg5.mp4')
       ..initialize().then((_) {
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-        _controller.play();
-        _controller.setLooping(true);
+        _profileBgCtrl.play();
+        _profileBgCtrl.setLooping(true);
 
         setState(() {});
       });
@@ -55,6 +55,12 @@ following->>ONlineUserId->profileID
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    _profileBgCtrl.dispose();
+    super.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: Colors.tealAccent,
@@ -64,9 +70,9 @@ following->>ONlineUserId->profileID
             child: FittedBox(
               fit: BoxFit.fill,
               child: SizedBox(
-                width: _controller.value.size?.width ?? 0,
-                height: _controller.value.size?.height ?? 0,
-                child: VideoPlayer(_controller),
+                width: _profileBgCtrl.value.size?.width ?? 0,
+                height: _profileBgCtrl.value.size?.height ?? 0,
+                child: VideoPlayer(_profileBgCtrl),
               ),
             ),
           ),

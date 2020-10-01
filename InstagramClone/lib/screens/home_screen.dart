@@ -74,114 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  handleGoogleSignIn(GoogleSignInAccount signInAccount) async {
-    if (signInAccount != null) {
-      await storeUserToFirebase();
-      setState(() {
-        isSignedIn = true;
-      });
-      //    configureRealTimePushNotif();
-    } else {
-      setState(() {
-        isSignedIn = false;
-      });
-    }
-  }
 
-  //
-  // configureRealTimePushNotif() {
-  //   final GoogleSignInAccount gUser = googleSignIn.currentUser;
-  //   if (Platform.isIOS) {
-  //     //iOS Permissions
-  //     firebaseMessaging.requestNotificationPermissions(
-  //         IosNotificationSettings(alert: true, badge: true, sound: true));
-  //
-  //     firebaseMessaging.onIosSettingsRegistered.listen((settings) {
-  //       print("Registered!");
-  //     });
-  //   }
-  //
-  //   firebaseMessaging.getToken().then((value) => userCollectionRef
-  //       .document(currUserData.id)
-  //       .updateData({"androidNotificationToken": value}));
-  //
-  //   firebaseMessaging.configure(onMessage: (Map<String, dynamic> msg) async {
-  //     final String recipientID = msg["data"]["recipient"];
-  //     final String body = msg["notification"]["body"];
-  //
-  //     if (recipientID == currUserData.id) {
-  //       SnackBar snackBar = SnackBar(
-  //         backgroundColor: Colors.pink,
-  //         content: Text(
-  //           body,
-  //           style: TextStyle(color: Colors.white),
-  //           overflow: TextOverflow.ellipsis,
-  //         ),
-  //       );
-  //
-  //       scaffoldKey.currentState.showSnackBar(snackBar);
-  //     }
-  //   });
-  // }
-
-  List<String> prepareSearchIndex(String value) {
-    List<String> splitList = value.split(' ');
-    List<String> indexList = [];
-
-    for (int i = 0; i < splitList.length; i++) {
-      for (int j = 0; j < splitList[i].length + i; j++) {
-        indexList.add(splitList[i].substring(0, j));
-      }
-    }
-
-    return indexList;
-  }
-
-  storeUserToFirebase() async {
-    final GoogleSignInAccount currUser = googleSignIn.currentUser;
-    DocumentSnapshot documentSnapshot =
-        await userCollectionRef.document(currUser.id).get();
-
-    if (!documentSnapshot.exists) {
-      final username = await Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => CreateAccScreen(context),
-          ));
-      List<String> searchUtil = prepareSearchIndex(currUser.displayName);
-      final timeStamp = DateTime.now();
-      userCollectionRef.document(currUser.id).setData({
-        "id": currUser.id,
-        "fullName": currUser.displayName,
-        "userName": username,
-        "imgUrl": currUser.photoUrl,
-        "email": currUser.email,
-        "bio": "Here goes the bio",
-        "timestamp": timeStamp,
-        "searchUtil": searchUtil
-      });
-
-      await followersCollectionRef
-          .document(currUser.id)
-          .collection("userFollowers")
-          .document(currUser.id)
-          .setData({});
-      documentSnapshot = await userCollectionRef.document(currUser.id).get();
-    }
-
-    currUserData = User.fromDocument(documentSnapshot);
-    List<PostCard> posts = [];
-
-    timeLineCollectionRef.document(currUser.id).collection("timeLinePosts");
-  }
-
-  signInUser() {
-    googleSignIn.signIn();
-  }
-
-  signOutUser() {
-    googleSignIn.signOut();
-  }
 
   @override
   void dispose() {
@@ -192,43 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  handlePageChange(int index) {
-    setState(() {
-      tabPageIndex = index;
 
-      switch (index) {
-        case 0:
-          setState(() {
-            currItemLG = Palette.homescreen_0;
-          });
-          break;
-        case 1:
-          setState(() {
-            currItemLG = Palette.homescreen_1;
-          });
-          break;
-        case 2:
-          setState(() {
-            currItemLG = Palette.homescreen_2;
-          });
-          break;
-        case 3:
-          setState(() {
-            currItemLG = Palette.homescreen_3;
-          });
-          break;
-        default:
-          setState(() {
-            currItemLG = Palette.homescreen_3;
-          });
-      }
-    });
-  }
-
-  handleTabChange(int i) {
-    pgCtrl.animateToPage(i,
-        duration: Duration(milliseconds: 400), curve: Curves.easeIn);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -236,6 +93,24 @@ class _HomeScreenState extends State<HomeScreen> {
       //HomeScreen
       return Scaffold(
         key: scaffoldKey,
+        // body: IndexedStack(
+        //   index: tabPageIndex,
+        //
+        //   children: [
+        //     TimeLineScreen(
+        //       currUser: currUserData,
+        //     ),
+        //     SearchScreen(),
+        //     UploadPostScreen(
+        //       currUser: currUserData,
+        //     ),
+        //     NotifActivityScreen(),
+        //     ProfileScreen(
+        //       userProfileId: currUserData.id,
+        //     )
+        //   ],
+        // ),
+
         body: PageView(
           controller: pgCtrl,
           children: [
@@ -251,12 +126,14 @@ class _HomeScreenState extends State<HomeScreen> {
               userProfileId: currUserData.id,
             )
           ],
+          physics:NeverScrollableScrollPhysics() ,
           onPageChanged: handlePageChange,
         ),
         extendBody: true,
         bottomNavigationBar: CupertinoTabBar(
           currentIndex: tabPageIndex,
           onTap: handleTabChange,
+          inactiveColor: Colors.white,
           backgroundColor: Color(0x00ffffff),
           items: [
             BottomNavigationBarItem(
@@ -312,11 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
       return Scaffold(
         body: Stack(
           children: [
-            // Container(
-            //   width: MediaQuery.of(context).size.width  ,
-            //   height: MediaQuery.of(context).size.height  ,
-            //   child: VideoPlayer(_controller),
-            // ),
+
             SizedBox.expand(
               child: FittedBox(
                 fit: BoxFit.fill,
@@ -444,5 +317,125 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
     }
+  }
+  handlePageChange(int index) {
+    setState(() {
+      tabPageIndex = index;
+
+    });
+  }
+
+  handleTabChange(int i) {
+    // pgCtrl.animateToPage(i,
+    //     duration: Duration(milliseconds: 400), curve: Curves.easeIn);
+    pgCtrl.jumpToPage(i);
+  }
+  handleGoogleSignIn(GoogleSignInAccount signInAccount) async {
+    if (signInAccount != null) {
+      await storeUserToFirebase();
+      setState(() {
+        isSignedIn = true;
+      });
+      //    configureRealTimePushNotif();
+    } else {
+      setState(() {
+        isSignedIn = false;
+      });
+    }
+  }
+
+  //
+  // configureRealTimePushNotif() {
+  //   final GoogleSignInAccount gUser = googleSignIn.currentUser;
+  //   if (Platform.isIOS) {
+  //     //iOS Permissions
+  //     firebaseMessaging.requestNotificationPermissions(
+  //         IosNotificationSettings(alert: true, badge: true, sound: true));
+  //
+  //     firebaseMessaging.onIosSettingsRegistered.listen((settings) {
+  //       print("Registered!");
+  //     });
+  //   }
+  //
+  //   firebaseMessaging.getToken().then((value) => userCollectionRef
+  //       .document(currUserData.id)
+  //       .updateData({"androidNotificationToken": value}));
+  //
+  //   firebaseMessaging.configure(onMessage: (Map<String, dynamic> msg) async {
+  //     final String recipientID = msg["data"]["recipient"];
+  //     final String body = msg["notification"]["body"];
+  //
+  //     if (recipientID == currUserData.id) {
+  //       SnackBar snackBar = SnackBar(
+  //         backgroundColor: Colors.pink,
+  //         content: Text(
+  //           body,
+  //           style: TextStyle(color: Colors.white),
+  //           overflow: TextOverflow.ellipsis,
+  //         ),
+  //       );
+  //
+  //       scaffoldKey.currentState.showSnackBar(snackBar);
+  //     }
+  //   });
+  // }
+
+  List<String> prepareSearchIndex(String value) {
+    List<String> splitList = value.split(' ');
+    List<String> indexList = [];
+
+    for (int i = 0; i < splitList.length; i++) {
+      for (int j = 0; j < splitList[i].length + i; j++) {
+        indexList.add(splitList[i].substring(0, j));
+      }
+    }
+
+    return indexList;
+  }
+
+  storeUserToFirebase() async {
+    final GoogleSignInAccount currUser = googleSignIn.currentUser;
+    DocumentSnapshot documentSnapshot =
+    await userCollectionRef.document(currUser.id).get();
+
+    if (!documentSnapshot.exists) {
+      final username = await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CreateAccScreen(context),
+          ));
+      List<String> searchUtil = prepareSearchIndex(currUser.displayName);
+      final timeStamp = DateTime.now();
+      userCollectionRef.document(currUser.id).setData({
+        "id": currUser.id,
+        "fullName": currUser.displayName,
+        "userName": username,
+        "imgUrl": currUser.photoUrl,
+        "email": currUser.email,
+        "bio": "Here goes the bio",
+        "timestamp": timeStamp,
+        "searchUtil": searchUtil
+      });
+
+      await followersCollectionRef
+          .document(currUser.id)
+          .collection("userFollowers")
+          .document(currUser.id)
+          .setData({});
+      documentSnapshot = await userCollectionRef.document(currUser.id).get();
+    }
+
+    currUserData = User.fromDocument(documentSnapshot);
+    List<PostCard> posts = [];
+
+    timeLineCollectionRef.document(currUser.id).collection("timeLinePosts");
+  }
+
+  signInUser() {
+    googleSignIn.signIn();
+  }
+
+  signOutUser() {
+    googleSignIn.signOut();
   }
 }

@@ -30,6 +30,10 @@ class PostDetailScreen extends StatelessWidget {
             body: ListView(
               children: [
                 Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/bg.jpg"),
+                          fit: BoxFit.cover)),
                   child: postCard,
                 )
               ],

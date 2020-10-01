@@ -12,17 +12,17 @@ class NotifActivityScreen extends StatefulWidget {
 
 class _NotifActivityScreenState extends State<NotifActivityScreen> {
 
-  VideoPlayerController _controller;
+  VideoPlayerController _notifBgCtrl;
   @override
   void initState() {
     // TODO: implement initState
-    _controller = VideoPlayerController.asset(
+    _notifBgCtrl = VideoPlayerController.asset(
         'assets/videos/bg4.mp4')
       ..initialize().then((_) {
 
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-        _controller.play();
-        _controller.setLooping(true);
+        _notifBgCtrl.play();
+        _notifBgCtrl.setLooping(true);
 
         setState(() {});
       });
@@ -33,7 +33,7 @@ class _NotifActivityScreenState extends State<NotifActivityScreen> {
   @override
   void dispose() {
     // TODO: implement dispose
-    _controller.dispose();
+    _notifBgCtrl.dispose();
     super.dispose();
   }
 
@@ -47,9 +47,9 @@ class _NotifActivityScreenState extends State<NotifActivityScreen> {
             child: FittedBox(
               fit: BoxFit.fill,
               child: SizedBox(
-                width: _controller.value.size?.width ?? 0,
-                height: _controller.value.size?.height ?? 0,
-                child: VideoPlayer(_controller),
+                width: _notifBgCtrl.value.size?.width ?? 0,
+                height: _notifBgCtrl.value.size?.height ?? 0,
+                child: VideoPlayer(_notifBgCtrl),
               ),
             ),
           ),

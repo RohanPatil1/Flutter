@@ -18,20 +18,12 @@ String searchString;
 class _SearchScreenState extends State<SearchScreen> {
   TextEditingController _textEditingController = TextEditingController();
   final userCollectionRef = Firestore.instance.collection("users");
-  VideoPlayerController _searchingCtrl;
   VideoPlayerController _bgCtrl;
   double opacity=1.0;
   @override
   void initState() {
     // TODO: implement initState
-    _searchingCtrl = VideoPlayerController.asset('assets/videos/search_bg.mp4')
-      ..initialize().then((_) {
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-        _searchingCtrl.play();
-        _searchingCtrl.setLooping(true);
 
-        setState(() {});
-      });
     _bgCtrl = VideoPlayerController.asset('assets/videos/bg2.mp4')
       ..initialize().then((_) {
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
@@ -47,7 +39,7 @@ class _SearchScreenState extends State<SearchScreen> {
   void dispose() {
     // TODO: implement dispose
     _textEditingController.dispose();
-    _searchingCtrl.dispose();
+  _bgCtrl.dispose();
     super.dispose();
   }
 

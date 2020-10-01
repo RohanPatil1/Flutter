@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:luffyvio/data_models/user_data.dart';
 import 'package:luffyvio/screens/home_screen.dart';
 import 'package:luffyvio/screens/profile_screen.dart';
+import 'package:luffyvio/widgets/upload_dialog.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:image/image.dart' as Img;
@@ -317,22 +318,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     return showDialog(
       context: context,
       builder: (context) {
-        return SimpleDialog(
-          title: Text("New Post "),
-          children: <Widget>[
-            SimpleDialogOption(
-              child: Text("Capture image from Camera"),
-              onPressed: () => uploadImageFromCamera(),
-            ),
-            SimpleDialogOption(
-              child: Text("Choose image from Gallery"),
-              onPressed: () => uploadImageFromGallery(),
-            ),
-            SimpleDialogOption(
-              child: Text("Cancel"),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ],
+        return UploadDialog(
+          pickFromGallery: uploadImageFromGallery,
+          pickFromCamera: uploadImageFromCamera,
         );
       },
     );

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:luffyvio/config/palette.dart';
@@ -182,7 +183,7 @@ class _PostCardState extends State<PostCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.only(left: 20.0,top: 4.0),
+                margin: EdgeInsets.only(left: 20.0, top: 4.0),
                 child: Text(
                   "$username",
                   style: TextStyle(
@@ -193,7 +194,7 @@ class _PostCardState extends State<PostCard> {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(top:5.0),
+                  padding: const EdgeInsets.only(top: 5.0),
                   child: Text(
                     " " + description,
                     style: TextStyle(
@@ -306,12 +307,20 @@ class _PostCardState extends State<PostCard> {
         alignment: Alignment.center,
         children: [
           //  CachedNetworkImageProvider(imageUrl)
-          Image.network(
-            imageUrl,
+
+          FancyShimmerImage(
+            imageUrl: imageUrl,
             height: 420.0,
             width: MediaQuery.of(context).size.width - 60,
-            fit: BoxFit.fill,
+            boxFit: BoxFit.cover,
+
           ),
+          // Image.network(
+          //   imageUrl,
+          //   height: 420.0,
+          //   width: MediaQuery.of(context).size.width - 60,
+          //   fit: BoxFit.cover,
+          // ),
           showHeart
               ? Icon(
                   Icons.favorite,
