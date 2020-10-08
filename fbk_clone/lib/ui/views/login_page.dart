@@ -1,7 +1,6 @@
 import 'file:///G:/MyGithub/Flutter/fbk_clone/lib/ui/shared/palette.dart';
 import 'file:///G:/MyGithub/Flutter/fbk_clone/lib/ui/views/create_account_screen.dart';
 
-import 'package:fbk_clone/core/services/other_utils.dart';
 import 'package:fbk_clone/core/viewmodels/login_view_model.dart';
 import 'package:fbk_clone/ui/views/base_view.dart';
 import 'package:fbk_clone/ui/widgets/custom_input.dart';
@@ -325,7 +324,7 @@ class LoginPageDesktop extends StatelessWidget {
                                 hintText: "Email address or phone number",
                                 onChanged: (value) {},
                                 onSubmitted: (value) {
-                            //      OtherUtils().passwordFocusNode.requestFocus();
+                                  //      OtherUtils().passwordFocusNode.requestFocus();
                                 },
                                 textInputAction: TextInputAction.next,
                               ),

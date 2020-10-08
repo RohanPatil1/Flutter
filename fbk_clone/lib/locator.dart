@@ -1,4 +1,5 @@
 import 'package:fbk_clone/core/services/dialog_service.dart';
+import 'package:fbk_clone/core/services/firestore_service.dart';
 import 'package:fbk_clone/core/services/navigation_service.dart';
 import 'package:fbk_clone/core/viewmodels/create_account_view_model.dart';
 import 'package:get_it/get_it.dart';
@@ -13,6 +14,7 @@ void setupLocator() {
   locator.registerLazySingleton(() => AuthService());
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => DialogService());
+  locator.registerLazySingleton(() => FirestoreService());
   // locator.registerLazySingleton(() => Api());
   //
   locator.registerFactory(() => CreateAccViewModel());

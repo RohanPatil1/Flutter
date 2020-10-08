@@ -1,7 +1,5 @@
 import 'base_view.dart';
 import 'file:///G:/MyGithub/Flutter/fbk_clone/lib/ui/shared/palette.dart';
-
-import 'package:fbk_clone/core/services/other_utils.dart';
 import 'package:fbk_clone/core/viewmodels/create_account_view_model.dart';
 import 'package:fbk_clone/ui/widgets/custom_input.dart';
 import 'package:flutter/material.dart';

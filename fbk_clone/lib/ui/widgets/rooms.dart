@@ -4,7 +4,7 @@ import 'file:///G:/MyGithub/Flutter/fbk_clone/lib/ui/shared/palette.dart';
 import 'package:fbk_clone/ui/widgets/widgets.dart';
 
 class Rooms extends StatelessWidget {
-  final List<User> onlineUsers;
+  final List<ChgUser> onlineUsers;
 
   const Rooms({
     Key key,
@@ -38,7 +38,7 @@ class Rooms extends StatelessWidget {
                 child: _CreateRoomButton(),
               );
             }
-            final User user = onlineUsers[index - 1];
+            final ChgUser user = onlineUsers[index - 1];
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: ProfileAvatar(

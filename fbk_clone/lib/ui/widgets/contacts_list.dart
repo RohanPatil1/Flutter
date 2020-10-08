@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fbk_clone/ui/widgets/widgets.dart';
 
 class ContactsList extends StatelessWidget {
-  final List<User> users;
+  final List<ChgUser> users;
 
   const ContactsList({
     Key key,
@@ -45,7 +45,7 @@ class ContactsList extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               itemCount: users.length,
               itemBuilder: (BuildContext context, int index) {
-                final User user = users[index];
+                final ChgUser user = users[index];
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: UserCard(user: user),

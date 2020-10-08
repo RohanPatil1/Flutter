@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fbk_clone/ui/widgets/widgets.dart';
 
 class UserCard extends StatelessWidget {
-  final User user;
+  final ChgUser user;
 
   const UserCard({
     Key key,

@@ -1,12 +1,29 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fbk_clone/core/models/user.dart';
+import 'package:fbk_clone/core/services/firestore_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../locator.dart';
+
 class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirestoreService _firestoreService = locator<FirestoreService>();
+
+  User _currUser;
+
+  User get currUser => _currUser;
 
   Future<bool> isUserLoggedIn() async {
-    var user = _firebaseAuth.currentUser;
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    await populateCurrUser(user);
     return user != null;
+  }
+
+  Future populateCurrUser(FirebaseUser firebaseUser) async {
+    if (firebaseUser != null) {
+      _currUser = await _firestoreService.getUser(firebaseUser.uid);
+    }
   }
 
   Future createAccount(

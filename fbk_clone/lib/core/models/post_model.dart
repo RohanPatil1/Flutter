@@ -1,7 +1,7 @@
 import 'package:meta/meta.dart';
 import 'models.dart';
 class Post {
-  final User user;
+  final ChgUser user;
   final String caption;
   final String timeAgo;
   final String imageUrl;

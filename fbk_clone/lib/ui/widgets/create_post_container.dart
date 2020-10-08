@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fbk_clone/ui/widgets/widgets.dart';
 
 class CreatePostContainer extends StatelessWidget {
-  final User currentUser;
+  final ChgUser currentUser;
 
   const CreatePostContainer({
     Key key,

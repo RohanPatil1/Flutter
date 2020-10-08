@@ -1,7 +1,7 @@
 import 'package:meta/meta.dart';
 import 'models.dart';
 class Story {
-  final User user;
+  final ChgUser user;
   final String imageUrl;
   final bool isViewed;
 

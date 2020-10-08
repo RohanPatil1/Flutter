@@ -6,7 +6,7 @@ import 'file:///G:/MyGithub/Flutter/fbk_clone/lib/ui/shared/palette.dart';
 import 'package:fbk_clone/ui/widgets/widgets.dart';
 
 class Stories extends StatelessWidget {
-  final User currentUser;
+  final ChgUser currentUser;
   final List<Story> stories;
 
   const Stories({
@@ -50,7 +50,7 @@ class Stories extends StatelessWidget {
 
 class _StoryCard extends StatelessWidget {
   final bool isAddStory;
-  final User currentUser;
+  final ChgUser currentUser;
   final Story story;
 
   const _StoryCard({

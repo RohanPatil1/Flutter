@@ -1,10 +1,10 @@
 import 'package:meta/meta.dart';
 
-class User {
+class ChgUser {
   final String name;
   final String imageUrl;
 
-  const User({
+  const ChgUser({
     @required this.name,
     @required this.imageUrl,
   });

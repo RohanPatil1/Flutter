@@ -15,7 +15,7 @@ class MoreOptionsList extends StatelessWidget {
     [MdiIcons.calendarStar, Colors.red, 'Events'],
   ];
 
-  final User currentUser;
+  final ChgUser currentUser;
 
   const MoreOptionsList({
     Key key,

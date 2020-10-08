@@ -5,7 +5,7 @@ import 'package:fbk_clone/ui/widgets/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CustomAppBar extends StatelessWidget {
-  final User currentUser;
+  final ChgUser currentUser;
   final List<IconData> icons;
   final int selectedIndex;
   final Function(int) onTap;
