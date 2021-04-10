@@ -1,7 +1,8 @@
-import 'file:///G:/MyGithub/Flutter/fbk_clone/lib/ui/shared/palette.dart';
-import 'file:///G:/MyGithub/Flutter/fbk_clone/lib/ui/views/create_account_screen.dart';
+
+
 
 import 'package:fbk_clone/core/viewmodels/login_view_model.dart';
+import 'package:fbk_clone/ui/shared/palette.dart';
 import 'package:fbk_clone/ui/views/base_view.dart';
 import 'package:fbk_clone/ui/widgets/custom_input.dart';
 import 'package:fbk_clone/ui/widgets/widgets.dart';
@@ -9,6 +10,8 @@ import 'package:fbk_clone/ui/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'create_account_screen.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -40,9 +43,9 @@ class _LoginPageMobileState extends State<LoginPageMobile>
   AnimationController animationController;
 
   final TextEditingController emailTextEditingController =
-      TextEditingController();
+  TextEditingController();
   final TextEditingController passwordTextEditingController =
-      TextEditingController();
+  TextEditingController();
 
   @override
   void initState() {
@@ -53,13 +56,13 @@ class _LoginPageMobileState extends State<LoginPageMobile>
         AnimationController(duration: Duration(seconds: 2), vsync: this);
 
     logoAnimation = Tween(
-            begin: widget.deviceHeight * 0.45, end: widget.deviceHeight * 0.62)
+        begin: widget.deviceHeight * 0.45, end: widget.deviceHeight * 0.62)
         .animate(CurvedAnimation(
-            parent: animationController,
-            curve: Interval(0.2, 1.0, curve: Curves.easeInOutExpo)))
-          ..addListener(() {
-            setState(() {});
-          });
+        parent: animationController,
+        curve: Interval(0.2, 1.0, curve: Curves.easeInOutExpo)))
+      ..addListener(() {
+        setState(() {});
+      });
     inputBoxAnimation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
         parent: animationController,
         curve: Interval(0.8, 1.0, curve: Curves.easeInOut)))
@@ -91,11 +94,11 @@ class _LoginPageMobileState extends State<LoginPageMobile>
                     text: "मराठी · हिंदी · ",
                     style: TextStyle(color: Colors.black54, fontSize: 18.0),
                     children: <TextSpan>[
-                  TextSpan(
-                      text: "More...",
-                      style: TextStyle(
-                          color: Palette.facebookBlue, fontSize: 18.0))
-                ])),
+                      TextSpan(
+                          text: "More...",
+                          style: TextStyle(
+                              color: Palette.facebookBlue, fontSize: 18.0))
+                    ])),
           ),
           body: Stack(
             children: [
@@ -128,7 +131,7 @@ class _LoginPageMobileState extends State<LoginPageMobile>
                                   model.logInUser(
                                       email: emailTextEditingController.text,
                                       password:
-                                          passwordTextEditingController.text);
+                                      passwordTextEditingController.text);
                                 },
                                 child: Container(
                                   margin: EdgeInsets.symmetric(
@@ -139,16 +142,16 @@ class _LoginPageMobileState extends State<LoginPageMobile>
                                   ),
                                   child: Center(
                                       child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Log In",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  )),
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "Log In",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      )),
                                 ),
                               ),
                               Padding(
@@ -170,10 +173,10 @@ class _LoginPageMobileState extends State<LoginPageMobile>
                               children: [
                                 Container(
                                     margin:
-                                        EdgeInsets.symmetric(horizontal: 3.0),
+                                    EdgeInsets.symmetric(horizontal: 3.0),
                                     height: 3.0,
                                     width:
-                                        MediaQuery.of(context).size.width * 0.3,
+                                    MediaQuery.of(context).size.width * 0.3,
                                     child: Divider(
                                       color: Colors.grey,
                                       thickness: 0.4,
@@ -185,10 +188,10 @@ class _LoginPageMobileState extends State<LoginPageMobile>
                                 ),
                                 Container(
                                     margin:
-                                        EdgeInsets.symmetric(horizontal: 3.0),
+                                    EdgeInsets.symmetric(horizontal: 3.0),
                                     height: 3.0,
                                     width:
-                                        MediaQuery.of(context).size.width * 0.3,
+                                    MediaQuery.of(context).size.width * 0.3,
                                     child: Divider(
                                       color: Colors.grey,
                                       thickness: 0.4,
@@ -208,15 +211,15 @@ class _LoginPageMobileState extends State<LoginPageMobile>
                                   borderRadius: BorderRadius.circular(5.0)),
                               child: Center(
                                   child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Create New Facebook Account",
-                                  style: GoogleFonts.roboto(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16.0),
-                                ),
-                              )),
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Create New Facebook Account",
+                                      style: GoogleFonts.roboto(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16.0),
+                                    ),
+                                  )),
                             ),
                           )
                         ],
@@ -352,16 +355,16 @@ class LoginPageDesktop extends StatelessWidget {
                                   ),
                                   child: Center(
                                       child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: Text(
-                                      "Log In",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  )),
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: Text(
+                                          "Log In",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      )),
                                 ),
                               ),
                               Padding(
@@ -400,15 +403,15 @@ class LoginPageDesktop extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(5.0)),
                               child: Center(
                                   child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Create New  Account",
-                                  style: GoogleFonts.roboto(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16.0),
-                                ),
-                              )),
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Create New  Account",
+                                      style: GoogleFonts.roboto(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16.0),
+                                    ),
+                                  )),
                             ),
                           )
                         ],

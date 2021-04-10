@@ -5,7 +5,7 @@ import 'package:indianews18/data_model/news_data.dart';
 class ApiUtils {
   http_dio.Dio dio = http_dio.Dio();
 
-  fetchNewsData() async {
+    fetchNewsData() async {
     final key = "3c306b27306041a2a1b8564dd048044c";
     http_dio.Response response = await dio
         .get("https://newsapi.org/v2/top-headlines?country=in&apiKey=$key");

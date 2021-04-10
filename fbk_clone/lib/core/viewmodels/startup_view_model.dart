@@ -9,15 +9,19 @@ import 'base_model.dart';
 
 class StartUpViewModel extends BaseModel {
   final AuthService _authService = locator<AuthService>();
-  final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
   Future handleStartUpLogin() async {
+  print("HANDLING STARTUP LOGIC");
     var isLoggedIn = await _authService.isUserLoggedIn();
-    if (isLoggedIn) {
-      _navigationService.navigateTo("home");
-    } else {
-      _navigationService.navigateTo("login");
-    }
+    // if (isLoggedIn) {
+    //   print("HANDLING STARTUP LOGIC => Found 1");
+    //
+    //   _navigationService.navigateTo("home");
+    // } else {
+    //   print("HANDLING STARTUP LOGIC=> Found 2");
+    //
+    //   _navigationService.navigateTo("login");
+    // }
   }
 }

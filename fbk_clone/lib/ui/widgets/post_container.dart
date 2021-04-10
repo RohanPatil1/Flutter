@@ -46,9 +46,9 @@ class PostContainer extends StatelessWidget {
             ),
             post.imageUrl != null
                 ? Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: CachedNetworkImage(imageUrl: post.imageUrl),
-            )
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: CachedNetworkImage(imageUrl: post.imageUrl),
+                  )
                 : const SizedBox.shrink(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -73,14 +73,14 @@ class _PostHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        ProfileAvatar(imageUrl: post.user.imageUrl),
+        ProfileAvatar(imageUrl: ""),
         const SizedBox(width: 8.0),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                post.user.name,
+                "",
                 style: const TextStyle(
                   fontWeight: FontWeight.w600,
                 ),
@@ -88,7 +88,7 @@ class _PostHeader extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '${post.timeAgo} • ',
+                    '${post.timeStamp} • ',
                     style: TextStyle(
                       color: Colors.grey[600],
                       fontSize: 12.0,

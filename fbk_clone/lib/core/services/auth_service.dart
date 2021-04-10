@@ -10,17 +10,17 @@ class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirestoreService _firestoreService = locator<FirestoreService>();
 
-  User _currUser;
+  UserData _currUser;
 
-  User get currUser => _currUser;
+  UserData get currUser => _currUser;
 
   Future<bool> isUserLoggedIn() async {
-    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    User user = FirebaseAuth.instance.currentUser;
     await populateCurrUser(user);
     return user != null;
   }
 
-  Future populateCurrUser(FirebaseUser firebaseUser) async {
+  Future populateCurrUser(User firebaseUser) async {
     if (firebaseUser != null) {
       _currUser = await _firestoreService.getUser(firebaseUser.uid);
     }
@@ -29,10 +29,22 @@ class AuthService {
   Future createAccount(
       {@required String email, @required String password}) async {
     try {
-      var authResult = await _firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      UserCredential authResult = await _firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password);
+
+      UserData _user = UserData(
+          id: authResult.user.uid,
+          fullName: "Rohan Patil",
+          imgUrl:
+              "https://cdn.pixabay.com/photo/2017/05/13/23/05/img-src-x-2310895_960_720.png",
+          email: authResult.user.email);
+
+      _currUser = _user;
+      await _firestoreService.storeUser(_user);
+      // await populateCurrUser(authResult);
+
       return authResult != null;
-    } on AuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == "weak-password") {
         return "Password is too weak!";
       } else if (e.code == "email-already-in-use") {
@@ -46,10 +58,12 @@ class AuthService {
 
   Future logInUser({@required String email, @required String password}) async {
     try {
-      var result = await _firebaseAuth.signInWithEmailAndPassword(
+      UserCredential result = await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
+      await populateCurrUser(result.user);
+
       return result != null;
-    } on AuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       return e.message;
     } catch (e) {
       return e.toString();

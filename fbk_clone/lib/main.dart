@@ -8,8 +8,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'core/managers/dialog_mangaer.dart';
 import 'core/services/dialog_service.dart';
 import 'core/services/navigation_service.dart';
+import 'package:firebase_core/firebase_core.dart';
+/*
+TEST CREDENTIALS
+test123@test.com
+test1234
+ */
 
-void main() {
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   setupLocator();
   runApp(MyApp());
 }
