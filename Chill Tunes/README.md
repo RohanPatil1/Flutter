@@ -1,4 +1,4 @@
-# NirvanaZ
+# Chill Tunes
 
-Relaxing sound app
+
 
