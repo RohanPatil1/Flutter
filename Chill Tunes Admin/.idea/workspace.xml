@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="44d8cb1e-e3c9-46ef-8c47-18efe9dc9c75" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[7f15ccc6]" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1rCD77KwWilukLkK3nSlAKc1LxH" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="dart.settings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="44d8cb1e-e3c9-46ef-8c47-18efe9dc9c75" name="Default Changelist" comment="" />
+      <created>1618471007834</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618471007834</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="569" y="178" key="AndroidProcessChooserDialog" timestamp="1618557504934">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="569" y="178" key="AndroidProcessChooserDialog/0.0.1536.864@0.0.1536.864" timestamp="1618557504934" />
+    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1618896554519">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1618896554519" />
+    <state width="1495" height="563" key="GridCell.Tab.0.bottom" timestamp="1619167042097">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1495" height="563" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1619167042097" />
+    <state width="1495" height="563" key="GridCell.Tab.0.center" timestamp="1619167042097">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1495" height="563" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1619167042097" />
+    <state width="1495" height="563" key="GridCell.Tab.0.left" timestamp="1619167042096">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1495" height="563" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1619167042096" />
+    <state width="1495" height="563" key="GridCell.Tab.0.right" timestamp="1619167042097">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1495" height="563" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1619167042097" />
+    <state x="262" y="14" key="SettingsEditor" timestamp="1618506390322">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="262" y="14" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1618506390322" />
+    <state x="93" y="93" width="1350" height="678" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1618744239148">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="93" y="93" width="1350" height="678" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.864@0.0.1536.864" timestamp="1618744239148" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1618739950958">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1618739950958" />
+  </component>
+</project>
