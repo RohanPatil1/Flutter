@@ -24,7 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 #  dio_cache:
-  dio: 3.0.9
+  dio: ">=3.0.9 <6.0.0"
   flutter_staggered_grid_view:
   assets_audio_player: ^2.0.1
 
